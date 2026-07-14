@@ -1,10 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import Spline from "@splinetool/react-spline";
 import Swal from "sweetalert2";
+import confetti from "canvas-confetti";
 import { BsVolumeUpFill, BsVolumeMuteFill } from "react-icons/bs";
 
 import MouseStealing from './MouseStealer.jsx';
-import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
 import Lovegif from "./assets/GifData/main_temp.gif";
 import heartGif from "./assets/GifData/happy.gif";
 import sadGif from "./assets/GifData/sad.gif";
@@ -55,6 +54,16 @@ const NoGifs = [nogif0, nogif0_1, nogif1, nogif2, nogif3, nogif4, nogif5, nogif6
 const YesMusic = [yesmusic1, yesmusic3, yesmusic4, yesmusic2];
 const NoMusic = [nomusic1, nomusic2, nomusic3, nomusic4, nomusic5];
 
+const fireConfetti = () => {
+  confetti({
+    particleCount: 140,
+    spread: 90,
+    startVelocity: 45,
+    origin: { y: 0.6 },
+    colors: ["#FFB100", "#FF3CAC", "#784BA0", "#2B86C5"],
+  });
+};
+
 export default function Page() {
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
@@ -72,31 +81,31 @@ export default function Page() {
     let position;
     let tooClose;
     const minDistance = 15; // Minimum distance in 'vw' or 'vh'
-  
+
     do {
       position = {
         top: `${Math.random() * 90}vh`, // Keep within 90% of viewport height
         left: `${Math.random() * 90}vw`, // Keep within 90% of viewport width
       };
-  
+
       tooClose = existingPositions.some((p) => {
         const dx = Math.abs(parseFloat(p.left) - parseFloat(position.left));
         const dy = Math.abs(parseFloat(p.top) - parseFloat(position.top));
         return Math.sqrt(dx * dx + dy * dy) < minDistance;
       });
     } while (tooClose);
-  
+
     return position;
   };
-  
+
   const handleMouseEnterYes = () => {
     const gifs = [];
     const positions = [];
-  
+
     for (let i = 0; i < 10; i++) {
       const newPosition = generateRandomPositionWithSpacing(positions);
       positions.push(newPosition);
-  
+
       gifs.push({
         id: `heart-${i}`,
         src: heartGif,
@@ -106,18 +115,18 @@ export default function Page() {
         },
       });
     }
-  
+
     setFloatingGifs(gifs);
   };
-  
+
   const handleMouseEnterNo = () => {
     const gifs = [];
     const positions = [];
-  
+
     for (let i = 0; i < 10; i++) {
       const newPosition = generateRandomPositionWithSpacing(positions);
       positions.push(newPosition);
-  
+
       gifs.push({
         id: `sad-${i}`,
         src: sadGif,
@@ -127,24 +136,24 @@ export default function Page() {
         },
       });
     }
-  
+
     setFloatingGifs(gifs);
   };
-  
+
   const handleMouseLeave = () => {
     setFloatingGifs([]); // floating GIFs on mouse leave
   };
 
   // This ensures the "Yes" gif keeps restarting and playing infinitely
   useEffect(() => {
-    if (gifRef.current && yesPressed && noCount>3) {
+    if (gifRef.current && yesPressed && noCount > 3) {
       gifRef.current.src = YesGifs[currentGifIndex];
     }
   }, [yesPressed, currentGifIndex]);
 
   // Use effect to change the Yes gif every 5 seconds
   useEffect(() => {
-    if (yesPressed && noCount>3) {
+    if (yesPressed && noCount > 3) {
       const intervalId = setInterval(() => {
         setCurrentGifIndex((prevIndex) => (prevIndex + 1) % YesGifs.length);
       }, 5000); // Change gif every 5 seconds
@@ -177,17 +186,18 @@ export default function Page() {
       playMusic(NoMusic[nextSongIndex], NoMusic);
     }
   };
-  
+
   const handleYesClick = () => {
-    if(!popupShown){ // Only for Swal Fire Popup
+    fireConfetti();
+    if (!popupShown) { // Only for Swal Fire Popup
       setYesPressed(true);
     }
-    if(noCount>3){
+    if (noCount > 3) {
       setYesPressed(true);
       playMusic(YesMusic[0], YesMusic); // Play the first "Yes" music by default
     }
   };
-  
+
   const playMusic = (url, musicArray) => {
     if (currentAudio) {
       currentAudio.pause(); // Stop the currently playing song
@@ -211,43 +221,42 @@ export default function Page() {
     setIsMuted(!isMuted);
   };
 
-  const getNoButtonText = () => {
+  const noPhrases = [
+    "Vaddu 🙅",
+    "Nijam ga? (fr fr?)",
+    "Inkosari alochinchu! (think once more, no cap)",
+    "Chivari chance ra! (last chance!)",
+    "Nuvvu sure ah?",
+    "Manasu maarchuko, bangaram!",
+    "Idi correct ah? Cheppu! 👀",
+    "Naaku feel avvatledu ika 😢",
+    "Nee prema kavali naaku, fr",
+    "Bangaram, please na! 🥺",
+    "Idi nijame naa?",
+    "Manasu lo em undo cheppu!",
+    "Nannu vadilesthava? 😭",
+    "Naa gunde full break ayyindi 💔",
+    "Ee vibe em ra ithe?",
+    "Chala badha ga undi, bujji",
+    "Nuvvu lekunda zero vibes 📉",
+    "Inkosari alochinchu, chinni!",
+    "Idi final ah, fr fr?",
+    "Naa kosam okasari, please",
+    "Nee manasu em cheptundi? 💭",
+    "Nannu break chestunnava?",
+    "Please bangaram, inko chance ivvu! 🙏",
+    "Vaddu anaku laddu, please!",
+    "Idi last ah — avunu anesko! 🥺✨",
+  ];
 
-    const phrases = [
-      "No",
-      "Are you sure?",
-      "Really sure?",
-      "Think again!",
-      "Last chance!",
-      "Surely not?",
-      "You might regret this!",
-      "Give it another thought!",
-      "Are you absolutely certain?",
-      "This could be a mistake!",
-      "U Have a heart!💕",
-      "Don't be so cold!",
-      "Wouldn't you reconsider?",
-      "Is that your final answer?",
-      "You're breaking my heart ;(",
-      "But... why? 😢",
-      "Please, pretty please? 💖",
-      "I can't take this! 😫",
-      "Are you sure you want to do this to me? 😢",
-      "You're gonna hurt my feelings! 😥",
-      "I need you to reconsider, like now! 😓",
-      "I believe in you, don't disappoint me! 💔",
-      "My heart says yes, what about yours? ❤️",
-      "Don't leave me hanging! 😬",
-      "Plsss? :( You're breaking my heart 💔",
-    ];
-    
-    return phrases[Math.min(noCount, phrases.length - 1)];
+  const getNoButtonText = () => {
+    return noPhrases[Math.min(noCount, noPhrases.length - 1)];
   };
 
   useEffect(() => {
     if (yesPressed && noCount < 4 && !popupShown) {
       Swal.fire({
-        title: "I love you sooo Much!!!❤️, You’ve stolen my heart completely!!! 🥰💖 But itni pyaari ladki aur itni jaldi haan? Thoda aur nakhre karke mujhe tarpaao na! 🥰✨",
+        title: "Bangaram, seeing you already got naa manasu racing so fast 🥰💖 Nuvvu literally stole naa heart, no cap. Itha fast ga avunu cheppava? Tease me konchem more before you say yes, bujji! 🥰✨",
         showClass: {
           popup: `
             animate__animated
@@ -257,34 +266,42 @@ export default function Page() {
         },
         width: 700,
         padding: "2em",
-        color: "#716add",
-        background: `#fff url(${swalbg})`,
+        background: `linear-gradient(135deg, rgba(255,60,172,0.92), rgba(120,75,160,0.92)) url(${swalbg})`,
         backdrop: `
-          rgba(0,0,123,0.2)
+          rgba(20,10,40,0.6)
           url(${loveu})
           right
           no-repeat
         `,
+        customClass: {
+          popup: "laddu-swal-popup",
+          title: "laddu-swal-title",
+          confirmButton: "laddu-swal-confirm",
+        },
       });
       setPopupShown(true);
       setYesPressed(false);
     }
   }, [yesPressed, noCount, popupShown]);
-  
+
   useEffect(() => {
     if (yesPressed && noCount > 3 && !yespopupShown) {
       Swal.fire({
-        title: "I love you so much!! ❤️ You are my everything, my joy, my forever. Every moment with you is a memory I’ll cherish forever, and my heart beats only for you.</br> Will you be the love of my life forever?",
+        title: "Nuvvu naa prema, naa sunshine, naa forever bangaram ❤️ Every second with you feels like chala adirindi vibes. Will you be my laddu, forever and always? 🥰✨",
         width: 800,
         padding: "2em",
-        color: "#716add",
-        background: `#fff url(${swalbg})`,
+        background: `linear-gradient(135deg, rgba(255,60,172,0.92), rgba(120,75,160,0.92)) url(${swalbg})`,
         backdrop: `
-          rgba(0,0,123,0.7)
+          rgba(20,10,40,0.75)
           url(${purposerose})
           right
           no-repeat
         `,
+        customClass: {
+          popup: "laddu-swal-popup",
+          title: "laddu-swal-title",
+          confirmButton: "laddu-swal-confirm",
+        },
       });
       setYesPopupShown(true);
       setYesPressed(true);
@@ -294,94 +311,114 @@ export default function Page() {
   useEffect(() => {
     if (noCount == 25) {
       Swal.fire({
-        title: "My love for you is endless, like the stars in the sky—shining for you every night, even if you don’t always notice. 🌟 I’ll wait patiently, proving every day that you’re my everything. ❤️ Please press ‘Yes’ and let’s make this a forever story. 🥰✨<br/>'True love never gives up; it grows stronger with time.'",
+        title: "Naa prema for you has no end — shining like nakshatralu (stars) every night, even if nuvvu don't notice 🌟 I'll wait, bangaram, because chala nijam ga this could be forever. Please press 'Avunu' and let's make this a forever story 🥰✨<br/><i>True prema never gives up — it grows chala strong with time.</i>",
         width: 850,
         padding: "2em",
-        color: "#716add",
-        background: `#fff url(${swalbg})`,
+        background: `linear-gradient(135deg, rgba(255,60,172,0.92), rgba(120,75,160,0.92)) url(${swalbg})`,
         backdrop: `
-          rgba(0, 104, 123, 0.7)
+          rgba(20,10,40,0.75)
           url(${nogif1})
           right
           no-repeat
         `,
+        customClass: {
+          popup: "laddu-swal-popup",
+          title: "laddu-swal-title",
+          confirmButton: "laddu-swal-confirm",
+        },
       });
     }
   }, [noCount]);
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-screen h-screen -z-10">
-        <Spline scene="https://prod.spline.design/oSxVDduGPlsuUIvT/scene.splinecode" />
-        {/* <Spline scene="https://prod.spline.design/ZU2qkrU9Eyt1PHBx/scene.splinecode" /> */}
+      {/* Animated Gen-Z gradient blob background */}
+      <div className="fixed top-0 left-0 w-screen h-screen -z-10 overflow-hidden bg-gradient-to-br from-[#1a0b2e] via-[#3b1666] to-[#0f0524]">
+        <div className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-laddu-pink/50 rounded-full mix-blend-screen filter blur-3xl animate-blob" />
+        <div className="absolute top-1/3 -right-24 w-[26rem] h-[26rem] bg-laddu-indigo/50 rounded-full mix-blend-screen filter blur-3xl animate-blob [animation-delay:3s]" />
+        <div className="absolute bottom-0 left-1/4 w-[24rem] h-[24rem] bg-laddu-gold/40 rounded-full mix-blend-screen filter blur-3xl animate-blob [animation-delay:6s]" />
+        <div className="absolute bottom-10 right-1/4 w-[22rem] h-[22rem] bg-laddu-purple/50 rounded-full mix-blend-screen filter blur-3xl animate-blob [animation-delay:1.5s]" />
       </div>
 
       {noCount > 16 && noCount < 25 && yesPressed == false && <MouseStealing />}
 
-      <div className="overflow-hidden flex flex-col items-center justify-center pt-4 h-screen -mt-16 selection:bg-rose-600 selection:text-white text-zinc-900">
-        {yesPressed && noCount>3 ? (
-          <>
-            <img
-              ref={gifRef}
-              className="h-[230px] rounded-lg"
-              src={YesGifs[currentGifIndex]}
-              alt="Yes Response"
-            />
-            <div className="text-4xl md:text-6xl font-bold my-2" style={{ fontFamily: "Charm, serif", fontWeight: "700", fontStyle: "normal" }}>I Love You !!!</div>
-            <div  className="text-4xl md:text-4xl font-bold my-1" style={{ fontFamily: "Beau Rivage, serif", fontWeight: "500", fontStyle: "normal" }}> You’re the love of my life. </div> 
-            <WordMareque />
-          </>
-        ) : (
-          <>
-            <img
-              src={lovesvg}
-              className="fixed animate-pulse top-10 md:left-15 left-6 md:w-40 w-28"
-              alt="Love SVG"
-            />
-            <img
-              ref={gifRef}
-              className="h-[230px] rounded-lg"
-              src={Lovegif}
-              alt="Love Animation"
-            />
-            <h1 className="text-4xl md:text-6xl my-4 text-center">
-              Will you be my Valentine?
-            </h1>
-            <div className="flex flex-wrap justify-center gap-2 items-center">
-              <button
-                onMouseEnter={handleMouseEnterYes}
-                onMouseLeave={handleMouseLeave}
-                className={`bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg mr-4`}
-                style={{ fontSize: yesButtonSize }}
-                onClick={handleYesClick}
-              >
-                Yes
-              </button>
-              <button
-                onMouseEnter={handleMouseEnterNo}
-                onMouseLeave={handleMouseLeave}
-                onClick={handleNoClick}
-                className="bg-rose-500 hover:bg-rose-600 rounded-lg text-white font-bold py-2 px-4"
-              >
-                {noCount === 0 ? "No" : getNoButtonText()}
-              </button>
-            </div>
-            {floatingGifs.map((gif) => (
+      <div className="overflow-hidden flex flex-col items-center justify-center pt-4 h-screen -mt-4 selection:bg-laddu-pink selection:text-white text-white px-4">
+        <div className="w-full max-w-xl bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[2rem] shadow-[0_8px_60px_rgba(255,60,172,0.15)] px-6 py-8 md:px-10 md:py-10 flex flex-col items-center animate-popIn">
+          {yesPressed && noCount > 3 ? (
+            <>
               <img
-                key={gif.id}
-                src={gif.src}
-                alt="Floating Animation"
-                className="absolute w-12 h-12 animate-bounce"
-                style={gif.style}
+                ref={gifRef}
+                className="h-[200px] md:h-[230px] rounded-2xl shadow-lg border border-white/20"
+                src={YesGifs[currentGifIndex]}
+                alt="Yes Response"
               />
-            ))}
-          </>
-        )}
+              <div
+                className="text-4xl md:text-6xl font-extrabold my-3 text-center bg-gradient-to-r from-laddu-gold via-laddu-pink to-laddu-purple bg-clip-text text-transparent bg-[length:200%_200%] animate-shimmer"
+                style={{ fontFamily: "'Baloo 2', system-ui, sans-serif" }}
+              >
+                Adirindi Bangaram! 🥳❤️
+              </div>
+              <div
+                className="text-3xl md:text-4xl font-normal my-1 text-center text-laddu-gold"
+                style={{ fontFamily: "'Great Vibes', cursive" }}
+              >
+                Nuvvu naa Prema, naa Laddu, forever 💫
+              </div>
+              <WordMareque />
+            </>
+          ) : (
+            <>
+              <img
+                ref={gifRef}
+                className="h-[190px] md:h-[220px] rounded-2xl shadow-lg border border-white/20"
+                src={Lovegif}
+                alt="Love Animation"
+              />
+              <h1
+                className="text-3xl md:text-5xl my-5 text-center font-extrabold bg-gradient-to-r from-laddu-gold via-laddu-pink to-laddu-purple bg-clip-text text-transparent bg-[length:200%_200%] animate-shimmer leading-tight"
+                style={{ fontFamily: "'Baloo 2', system-ui, sans-serif" }}
+              >
+                Will You Be My Laddu, Bangaram? 🥰🍯
+              </h1>
+              <p className="text-sm md:text-base text-white/70 -mt-3 mb-5 text-center font-body">
+                (no cap, you're literally my prema forever)
+              </p>
+              <div className="flex flex-wrap justify-center gap-3 items-center">
+                <button
+                  onMouseEnter={handleMouseEnterYes}
+                  onMouseLeave={handleMouseLeave}
+                  className="font-heading font-bold text-white py-2.5 px-6 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 shadow-[0_0_25px_rgba(52,211,153,0.55)] hover:shadow-[0_0_40px_rgba(52,211,153,0.85)] hover:scale-105 active:scale-95 transition-all duration-200"
+                  style={{ fontSize: yesButtonSize }}
+                  onClick={handleYesClick}
+                >
+                  Avunu! 😍
+                </button>
+                <button
+                  onMouseEnter={handleMouseEnterNo}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={handleNoClick}
+                  className="font-heading font-bold text-white py-2.5 px-6 rounded-full bg-gradient-to-r from-rose-500 to-orange-500 shadow-[0_0_20px_rgba(244,63,94,0.5)] hover:shadow-[0_0_35px_rgba(244,63,94,0.8)] hover:animate-wiggle transition-all duration-200 text-sm md:text-base"
+                >
+                  {noCount === 0 ? "Vaddu 🙅" : getNoButtonText()}
+                </button>
+              </div>
+              {floatingGifs.map((gif) => (
+                <img
+                  key={gif.id}
+                  src={gif.src}
+                  alt="Floating Animation"
+                  className="absolute w-12 h-12 animate-bounce"
+                  style={gif.style}
+                />
+              ))}
+            </>
+          )}
+        </div>
         <button
-          className="fixed bottom-10 right-10 bg-gray-200 p-1 mb-2 rounded-full hover:bg-gray-300"
+          className="fixed bottom-6 right-6 bg-white/10 backdrop-blur-md border border-white/20 p-2.5 rounded-full hover:bg-white/20 transition-colors"
           onClick={toggleMute}
         >
-          {isMuted ? <BsVolumeMuteFill size={26} /> : <BsVolumeUpFill size={26} />}
+          {isMuted ? <BsVolumeMuteFill size={22} className="text-white" /> : <BsVolumeUpFill size={22} className="text-white" />}
         </button>
         <Footer />
       </div>
@@ -391,27 +428,12 @@ export default function Page() {
 
 const Footer = () => {
   return (
-    <a
-      className="fixed bottom-2 right-2 backdrop-blur-md opacity-80 hover:opacity-95 border p-1 rounded border-rose-300"
-      href="https://github.com/UjjwalSaini07"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <div className="fixed bottom-6 left-6 backdrop-blur-md bg-white/10 border border-white/20 text-white/80 text-xs md:text-sm px-3 py-1.5 rounded-full">
       Made with{" "}
       <span role="img" aria-label="heart">
         ❤️
       </span>
-      {" "}by Ujjwal
-    </a>
+      {" "}in Hyderabad 🍯
+    </div>
   );
 };
-
-
-
-
-
-
-
-// ! Pathways-
-// https://app.spline.design/file/48a9d880-40c9-4239-bd97-973aae012ee0
-// https://app.spline.design/file/72e6aee2-57ed-4698-afa7-430f8ed7bd87

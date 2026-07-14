@@ -4,19 +4,19 @@ const MarqueeProposal = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const sentences = [
-    "You light up my world like no one else.",
-    "Every moment with you feels like magic.",
-    "My world begins and ends with you in it.",
-    "You're the reason my heart beats faster.",
-    "Life feels complete when you're around.",
-    "I can't imagine my future without you.",
-    "You're my sunshine on the darkest days.",
-    "With you, every day is a blessing.",
-    "You’re the missing piece that completes my heart.",
-    "You make even ordinary moments feel extraordinary.",
-    "You make my world brighter and happier.",
-    "You're the dream I never want to wake up from.",
-    "Will you be the love of my life forever?",
+    "Nuvvu naa sunshine, no cap ☀️",
+    "Every second with you is chala magic ✨",
+    "Naa prema starts and ends with nuvvu",
+    "Nuvvu the reason naa heart beats faster 💓",
+    "Life feels complete tho nuvvu around",
+    "Can't imagine naa future without nuvvu",
+    "Nuvvu naa sunshine on the darkest days",
+    "With nuvvu, every day feels chala bagundi",
+    "Nuvvu the missing piece in naa manasu",
+    "Nuvvu make ordinary moments feel adirindi",
+    "Nuvvu make naa world brighter, bangaram",
+    "Nuvvu the dream I never want to wake up from",
+    "Will nuvvu be naa laddu forever? 💍",
   ];
 
   useEffect(() => {
@@ -29,15 +29,15 @@ const MarqueeProposal = () => {
   return (
     <div
       style={{
-        width: "50%",
-        height: "75px",
-        margin: "50px auto",
-        borderRadius: "25px",
+        width: "100%",
+        height: "70px",
+        margin: "36px auto 8px",
+        borderRadius: "999px",
         overflow: "hidden",
         position: "relative",
-        background: "transparent",
+        background: "rgba(255, 255, 255, 0.08)",
         boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
-        border: "4px solid #ffffff",
+        border: "2px solid rgba(255, 176, 0, 0.5)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -53,13 +53,13 @@ const MarqueeProposal = () => {
       >
         <span
           style={{
-            fontSize: "2rem",
-            fontFamily: "Charm, serif", 
-            // fontFamily: "Beau Rivage, serif", 
+            fontSize: "1.5rem",
+            fontFamily: "'Baloo 2', system-ui, sans-serif",
             fontStyle: "normal",
             fontWeight: "700",
-            color: "#191a19",
-            textShadow: "0 4px 8px rgba(0, 0, 0, 0.6)",
+            background: "linear-gradient(90deg, #FFB100, #FF3CAC, #784BA0)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
           }}
         >
           {sentences[currentIndex]}

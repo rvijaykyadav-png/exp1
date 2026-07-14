@@ -1,15 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Charm:wght@400;700&family=Elsie:wght@400;900&family=Great+Vibes&family=MonteCarlo&family=Parisienne&family=Prata&family=Quintessential&family=Square+Peg&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Great+Vibes&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 :root {
-  font-family: "Protest Riot", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -17,12 +18,18 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 body {
-  /* background: url("./assets/bg1.webp"); */
+  background-color: #1a0b2e;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden;
+}
+
+::selection {
+  background-color: #ff3cac;
+  color: white;
 }
 
 .animate-bounce {
@@ -42,4 +49,28 @@ body {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+/* SweetAlert2 Gen-Z glassmorphism theme */
+.laddu-swal-popup {
+  border-radius: 28px !important;
+  font-family: "Poppins", system-ui, sans-serif !important;
+  background: linear-gradient(135deg, rgba(255, 60, 172, 0.92), rgba(120, 75, 160, 0.92)) !important;
+  color: #fff !important;
+  box-shadow: 0 0 60px rgba(255, 176, 0, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.25) !important;
+}
+
+.laddu-swal-title {
+  font-family: "Baloo 2", system-ui, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.laddu-swal-confirm {
+  background: linear-gradient(90deg, #ffb100, #ff3cac) !important;
+  border-radius: 999px !important;
+  font-family: "Baloo 2", system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  padding: 0.6em 1.6em !important;
+  box-shadow: 0 8px 20px rgba(255, 176, 0, 0.4) !important;
 }
