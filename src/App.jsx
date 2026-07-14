@@ -38,15 +38,14 @@ import nogif7 from "./assets/GifData/No/RejectNo.gif";
 import nogif8 from "./assets/GifData/No/breakRej7.gif";
 
 //! yes - Music Importing
-import yesmusic1 from "./assets/AudioTracks/Love_LoveMeLikeYouDo.mp3";
-import yesmusic2 from "./assets/AudioTracks/Love_EDPerfect.mp3";
+import yesmusic1 from "./assets/AudioTracks/Love_EDPerfect.mp3";
 //! no - Music Importing
-import withoutMe from "./assets/AudioTracks/Reject_withoutMe.mp3";
+import nomusic1 from "./assets/AudioTracks/Love_LoveMeLikeYouDo.mp3";
 
 const YesGifs = [yesgif0, yesgif1, yesgif2, yesgif3, yesgif4, yesgif5, yesgif6, yesgif7, yesgif8, yesgif9, yesgif10, yesgif11];
 const NoGifs = [nogif0, nogif0_1, nogif1, nogif2, nogif3, nogif4, nogif5, nogif6, nogif7, nogif8];
-const YesMusic = [yesmusic1, yesmusic2];
-const NoMusic = [withoutMe];
+const YesMusic = [yesmusic1];
+const NoMusic = [nomusic1];
 
 const fireConfetti = () => {
   confetti({
