@@ -4,19 +4,19 @@ const MarqueeProposal = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const sentences = [
-    "నువ్వే నా సూర్యకాంతివి ☀️",
-    "నీతో ప్రతి క్షణం ఒక మాయాజాలం ✨",
-    "నా ప్రేమ నీతోనే మొదలై నీతోనే ముగుస్తుంది",
-    "నా గుండె వేగంగా కొట్టుకోవడానికి కారణం నువ్వే 💓",
-    "నువ్వుంటే జీవితం సంపూర్ణం అనిపిస్తుంది",
-    "నువ్వు లేని భవిష్యత్తును ఊహించలేను",
-    "చీకటి రోజుల్లో నువ్వే నా వెలుగు",
-    "నువ్వుంటే ప్రతి రోజూ ఒక వరం",
-    "నా మనసులో ఖాళీని నింపింది నువ్వే",
-    "మామూలు క్షణాలను నువ్వు అద్భుతంగా మారుస్తావు",
-    "నా ప్రపంచాన్ని నువ్వే ప్రకాశవంతం చేస్తావు",
-    "నువ్వే నా తీపి కల 💭",
-    "నువ్వు ఎప్పటికీ నా లడ్డూగా ఉంటావా? 💍",
+    "You're my sunshine ☀️",
+    "Every moment with you is magic ✨",
+    "My love begins and ends with you",
+    "You're the reason my heart beats faster 💓",
+    "Life feels complete when you're around",
+    "I can't imagine a future without you",
+    "You're my light on the darkest days",
+    "With you, every day is a blessing",
+    "You're the one who filled the emptiness in my heart",
+    "You make ordinary moments extraordinary",
+    "You make my world brighter",
+    "You're my sweetest dream 💭",
+    "Will you be my laddu forever? 💍",
   ];
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const MarqueeProposal = () => {
         <span
           style={{
             fontSize: "1.5rem",
-            fontFamily: "'Baloo Tammudu 2', system-ui, sans-serif",
+            fontFamily: "'Baloo 2', system-ui, sans-serif",
             fontStyle: "normal",
             fontWeight: "700",
             background: "linear-gradient(90deg, #FFB100, #FF3CAC, #784BA0)",
