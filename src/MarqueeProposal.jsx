@@ -4,19 +4,19 @@ const MarqueeProposal = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const sentences = [
-    "Nuvvu naa sunshine, no cap ☀️",
-    "Every second with you is chala magic ✨",
-    "Naa prema starts and ends with nuvvu",
-    "Nuvvu the reason naa heart beats faster 💓",
-    "Life feels complete tho nuvvu around",
-    "Can't imagine naa future without nuvvu",
-    "Nuvvu naa sunshine on the darkest days",
-    "With nuvvu, every day feels chala bagundi",
-    "Nuvvu the missing piece in naa manasu",
-    "Nuvvu make ordinary moments feel adirindi",
-    "Nuvvu make naa world brighter, bangaram",
-    "Nuvvu the dream I never want to wake up from",
-    "Will nuvvu be naa laddu forever? 💍",
+    "నువ్వే నా సూర్యకాంతివి ☀️",
+    "నీతో ప్రతి క్షణం ఒక మాయాజాలం ✨",
+    "నా ప్రేమ నీతోనే మొదలై నీతోనే ముగుస్తుంది",
+    "నా గుండె వేగంగా కొట్టుకోవడానికి కారణం నువ్వే 💓",
+    "నువ్వుంటే జీవితం సంపూర్ణం అనిపిస్తుంది",
+    "నువ్వు లేని భవిష్యత్తును ఊహించలేను",
+    "చీకటి రోజుల్లో నువ్వే నా వెలుగు",
+    "నువ్వుంటే ప్రతి రోజూ ఒక వరం",
+    "నా మనసులో ఖాళీని నింపింది నువ్వే",
+    "మామూలు క్షణాలను నువ్వు అద్భుతంగా మారుస్తావు",
+    "నా ప్రపంచాన్ని నువ్వే ప్రకాశవంతం చేస్తావు",
+    "నువ్వే నా తీపి కల 💭",
+    "నువ్వు ఎప్పటికీ నా లడ్డూగా ఉంటావా? 💍",
   ];
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const MarqueeProposal = () => {
         <span
           style={{
             fontSize: "1.5rem",
-            fontFamily: "'Baloo 2', system-ui, sans-serif",
+            fontFamily: "'Baloo Tammudu 2', system-ui, sans-serif",
             fontStyle: "normal",
             fontWeight: "700",
             background: "linear-gradient(90deg, #FFB100, #FF3CAC, #784BA0)",

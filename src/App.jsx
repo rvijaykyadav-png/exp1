@@ -222,31 +222,31 @@ export default function Page() {
   };
 
   const noPhrases = [
-    "Vaddu 🙅",
-    "Nijam ga? (fr fr?)",
-    "Inkosari alochinchu! (think once more, no cap)",
-    "Chivari chance ra! (last chance!)",
-    "Nuvvu sure ah?",
-    "Manasu maarchuko, bangaram!",
-    "Idi correct ah? Cheppu! 👀",
-    "Naaku feel avvatledu ika 😢",
-    "Nee prema kavali naaku, fr",
-    "Bangaram, please na! 🥺",
-    "Idi nijame naa?",
-    "Manasu lo em undo cheppu!",
-    "Nannu vadilesthava? 😭",
-    "Naa gunde full break ayyindi 💔",
-    "Ee vibe em ra ithe?",
-    "Chala badha ga undi, bujji",
-    "Nuvvu lekunda zero vibes 📉",
-    "Inkosari alochinchu, chinni!",
-    "Idi final ah, fr fr?",
-    "Naa kosam okasari, please",
-    "Nee manasu em cheptundi? 💭",
-    "Nannu break chestunnava?",
-    "Please bangaram, inko chance ivvu! 🙏",
-    "Vaddu anaku laddu, please!",
-    "Idi last ah — avunu anesko! 🥺✨",
+    "వద్దు 🙅",
+    "నిజంగానా?",
+    "ఇంకోసారి ఆలోచించు!",
+    "ఇదే చివరి అవకాశం!",
+    "ఖచ్చితంగానా?",
+    "మనసు మార్చుకో, బంగారం!",
+    "ఇది నిజమేనా?",
+    "నాకు అస్సలు బాలేదు! 😢",
+    "నాకు నీ ప్రేమ కావాలి!",
+    "బంగారం, దయచేసి! 🥺",
+    "ఇది నిజంగా నిజమేనా?",
+    "నీ మనసులో ఏముందో చెప్పు! 👀",
+    "నన్ను వదిలేస్తావా? 😭",
+    "నా గుండె విరిగిపోతోంది! 💔",
+    "ఇప్పుడు ఏమవుతోంది?",
+    "చాలా బాధగా ఉంది, బుజ్జీ",
+    "నువ్వు లేకపోతే ఏమీ బాలేదు! 📉",
+    "ఇంకోసారి ఆలోచించు, బుజ్జీ!",
+    "ఇదే నీ చివరి మాటా?",
+    "నా కోసం ఒక్కసారి, దయచేసి 🙏",
+    "నీ మనసు ఏం చెప్తోంది? 💭",
+    "నన్ను బాధపెడుతున్నావా?",
+    "దయచేసి బంగారం, ఇంకో అవకాశం ఇవ్వు! 🙏",
+    "వద్దు అనకు, లడ్డూ!",
+    "ఇదే చివరిది — అవును అనేసుకో! 🥺✨",
   ];
 
   const getNoButtonText = () => {
@@ -256,7 +256,7 @@ export default function Page() {
   useEffect(() => {
     if (yesPressed && noCount < 4 && !popupShown) {
       Swal.fire({
-        title: "Bangaram, seeing you already got naa manasu racing so fast 🥰💖 Nuvvu literally stole naa heart, no cap. Itha fast ga avunu cheppava? Tease me konchem more before you say yes, bujji! 🥰✨",
+        title: "బంగారం, నిన్ను చూశాక నా మనసు వేగంగా కొట్టుకుంటోంది 🥰💖 నువ్వు నా హృదయాన్ని పూర్తిగా దొంగిలించావ్! ఇంత తొందరగా 'అవును' అంటావా? కొంచెం సేపు ఆగు, నన్ను ఇంకాస్త ఊరించు బుజ్జీ! 🥰✨",
         showClass: {
           popup: `
             animate__animated
@@ -273,6 +273,7 @@ export default function Page() {
           right
           no-repeat
         `,
+        confirmButtonText: "సరే",
         customClass: {
           popup: "laddu-swal-popup",
           title: "laddu-swal-title",
@@ -287,7 +288,7 @@ export default function Page() {
   useEffect(() => {
     if (yesPressed && noCount > 3 && !yespopupShown) {
       Swal.fire({
-        title: "Nuvvu naa prema, naa sunshine, naa forever bangaram ❤️ Every second with you feels like chala adirindi vibes. Will you be my laddu, forever and always? 🥰✨",
+        title: "నువ్వే నా ప్రేమ, నా సూర్యకాంతి, నా శాశ్వత బంగారం ❤️ నీతో ప్రతి క్షణం అదిరిపోయే అనుభూతిగా అనిపిస్తుంది. నువ్వు ఎప్పటికీ నా లడ్డూగా ఉంటావా? 🥰✨",
         width: 800,
         padding: "2em",
         background: `linear-gradient(135deg, rgba(255,60,172,0.92), rgba(120,75,160,0.92)) url(${swalbg})`,
@@ -297,6 +298,7 @@ export default function Page() {
           right
           no-repeat
         `,
+        confirmButtonText: "సరే",
         customClass: {
           popup: "laddu-swal-popup",
           title: "laddu-swal-title",
@@ -311,7 +313,7 @@ export default function Page() {
   useEffect(() => {
     if (noCount == 25) {
       Swal.fire({
-        title: "Naa prema for you has no end — shining like nakshatralu (stars) every night, even if nuvvu don't notice 🌟 I'll wait, bangaram, because chala nijam ga this could be forever. Please press 'Avunu' and let's make this a forever story 🥰✨<br/><i>True prema never gives up — it grows chala strong with time.</i>",
+        title: "నా ప్రేమకు అంతం లేదు — ప్రతి రాత్రి నక్షత్రాల్లా నీ కోసం మెరుస్తూనే ఉంటుంది, నువ్వు గమనించకపోయినా 🌟 బంగారం, నేను ఓపికగా వేచి ఉంటాను, ఎందుకంటే నిజమైన ప్రేమ ఎప్పటికీ ఆగదు. దయచేసి 'అవును' అని నొక్కి, దీన్ని శాశ్వతమైన కథగా మారుద్దాం 🥰✨<br/><i>నిజమైన ప్రేమ ఎప్పుడూ ఓడిపోదు — కాలంతో పాటు మరింత బలంగా మారుతుంది.</i>",
         width: 850,
         padding: "2em",
         background: `linear-gradient(135deg, rgba(255,60,172,0.92), rgba(120,75,160,0.92)) url(${swalbg})`,
@@ -321,6 +323,7 @@ export default function Page() {
           right
           no-repeat
         `,
+        confirmButtonText: "సరే",
         customClass: {
           popup: "laddu-swal-popup",
           title: "laddu-swal-title",
@@ -354,15 +357,15 @@ export default function Page() {
               />
               <div
                 className="text-4xl md:text-6xl font-extrabold my-3 text-center bg-gradient-to-r from-laddu-gold via-laddu-pink to-laddu-purple bg-clip-text text-transparent bg-[length:200%_200%] animate-shimmer"
-                style={{ fontFamily: "'Baloo 2', system-ui, sans-serif" }}
+                style={{ fontFamily: "'Baloo Tammudu 2', system-ui, sans-serif" }}
               >
-                Adirindi Bangaram! 🥳❤️
+                అదిరింది బంగారం! 🥳❤️
               </div>
               <div
                 className="text-3xl md:text-4xl font-normal my-1 text-center text-laddu-gold"
-                style={{ fontFamily: "'Great Vibes', cursive" }}
+                style={{ fontFamily: "Ramaraja, cursive" }}
               >
-                Nuvvu naa Prema, naa Laddu, forever 💫
+                నువ్వే నా ప్రేమ, నా లడ్డూ, ఎప్పటికీ 💫
               </div>
               <WordMareque />
             </>
@@ -376,12 +379,12 @@ export default function Page() {
               />
               <h1
                 className="text-3xl md:text-5xl my-5 text-center font-extrabold bg-gradient-to-r from-laddu-gold via-laddu-pink to-laddu-purple bg-clip-text text-transparent bg-[length:200%_200%] animate-shimmer leading-tight"
-                style={{ fontFamily: "'Baloo 2', system-ui, sans-serif" }}
+                style={{ fontFamily: "'Baloo Tammudu 2', system-ui, sans-serif" }}
               >
-                Will You Be My Laddu, Bangaram? 🥰🍯
+                నువ్వు నా లడ్డూ అవుతావా? 🥰🍯
               </h1>
               <p className="text-sm md:text-base text-white/70 -mt-3 mb-5 text-center font-body">
-                (no cap, you're literally my prema forever)
+                నువ్వే నా బంగారం, ఎప్పటికీ 💫
               </p>
               <div className="flex flex-wrap justify-center gap-3 items-center">
                 <button
@@ -391,7 +394,7 @@ export default function Page() {
                   style={{ fontSize: yesButtonSize }}
                   onClick={handleYesClick}
                 >
-                  Avunu! 😍
+                  అవును! 😍
                 </button>
                 <button
                   onMouseEnter={handleMouseEnterNo}
@@ -399,7 +402,7 @@ export default function Page() {
                   onClick={handleNoClick}
                   className="font-heading font-bold text-white py-2.5 px-6 rounded-full bg-gradient-to-r from-rose-500 to-orange-500 shadow-[0_0_20px_rgba(244,63,94,0.5)] hover:shadow-[0_0_35px_rgba(244,63,94,0.8)] hover:animate-wiggle transition-all duration-200 text-sm md:text-base"
                 >
-                  {noCount === 0 ? "Vaddu 🙅" : getNoButtonText()}
+                  {noCount === 0 ? "వద్దు 🙅" : getNoButtonText()}
                 </button>
               </div>
               {floatingGifs.map((gif) => (
@@ -429,11 +432,11 @@ export default function Page() {
 const Footer = () => {
   return (
     <div className="fixed bottom-6 left-6 backdrop-blur-md bg-white/10 border border-white/20 text-white/80 text-xs md:text-sm px-3 py-1.5 rounded-full">
-      Made with{" "}
+      హైదరాబాద్‌లో{" "}
       <span role="img" aria-label="heart">
         ❤️
       </span>
-      {" "}in Hyderabad 🍯
+      {" "}తో చేసింది 🍯
     </div>
   );
 };

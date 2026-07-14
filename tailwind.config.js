@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        heading: ["Baloo 2", "system-ui", "sans-serif"],
-        body: ["Poppins", "system-ui", "sans-serif"],
-        script: ["Great Vibes", "cursive"],
+        heading: ["'Baloo Tammudu 2'", "system-ui", "sans-serif"],
+        body: ["'Noto Sans Telugu'", "system-ui", "sans-serif"],
+        script: ["Ramaraja", "cursive"],
       },
       colors: {
         laddu: {
