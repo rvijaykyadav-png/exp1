@@ -374,7 +374,7 @@ export default function Page() {
                 className="text-3xl md:text-5xl my-5 text-center font-extrabold bg-gradient-to-r from-laddu-gold via-laddu-pink to-laddu-purple bg-clip-text text-transparent bg-[length:200%_200%] animate-shimmer leading-tight"
                 style={{ fontFamily: "'Baloo 2', system-ui, sans-serif" }}
               >
-                Will You Be My Laddu? 🥰🍯
+                Will You Be My Valentine, Laddu? 🥰🍯
               </h1>
               <p className="text-sm md:text-base text-white/70 -mt-3 mb-5 text-center font-body">
                 You're my forever treasure 💫
